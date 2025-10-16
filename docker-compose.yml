@@ -1,6 +1,7 @@
 services:
   web:
-    image: odoo:19.0
+    image: odoo:17.0
+    # platform: linux/amd64 # Only version < 17.0 in arm64 (Apple Silicon / etc.)
     container_name: odoo_web
     depends_on:
       - db
@@ -17,7 +18,7 @@ services:
     # command: odoo -u your_module_name -d your_database_name --dev=xml,restart,qweb --log-level=debug
     command: odoo --dev=xml,restart,qweb --log-level=debug
   db:
-    image: pgvector/pgvector:pg17
+    image: postgres:13
     container_name: odoo_db
     environment:
       - POSTGRES_DB=postgres
