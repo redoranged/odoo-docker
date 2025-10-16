@@ -1,6 +1,7 @@
 services:
   web:
-    image: odoo:18.0
+    image: odoo:17.0
+    # platform: linux/amd64 # Only version < 17.0 in arm64 (Apple Silicon / etc.)
     container_name: odoo_web
     depends_on:
       - db
